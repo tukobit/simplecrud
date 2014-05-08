@@ -66,7 +66,7 @@
 										</div>
 										<div class="modal-body overflow-visible">
 											<form id="myuserAddForm">
-												<input type="hidden" value="" name="userId" id="userId"/>
+												<input type="hidden" value="" name="id" id="userId"/>
 												<div class="row">
 													<div class="col-xs-12 col-sm-12">
 														<div class="form-group">
@@ -94,8 +94,8 @@
 														<div class="form-group">
 															<label for="Sex">Sex</label>
 															<div>
-																<input type="radio" name="Sex" value="male">Male<br>
-																<input type="radio" name="Sex" value="female">Female
+																<input type="radio" name="Sex" value="M" id="male">Male<br>
+																<input type="radio" name="Sex" value="F" id="female">Female
 															</div>
 														</div>
 													</div>

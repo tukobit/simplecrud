@@ -34,12 +34,12 @@ $(document).ready(function() {
 			$(".userName").val();
 			// fetching tectbox id userName value
 			var userId = $tr.attr("id");
+			$("#userId").val(userId);
 			doRead(userId);
 		});
 
 		$(".js-delete").click(function(e) {
 			e.preventDefault();
-
 			//stops the event action
 			$tr = $(this).closest("tr");
 			var userId = Number($tr.attr("id"));
@@ -47,112 +47,121 @@ $(document).ready(function() {
 		});
 	});
 
-	function doRead(userId) {
-		$.getJSON(baseUrl + "admin/Company/10001/user/" + userId, function(dataObj) {
-			$("#userId").val(dataObj.Id);
-			$("#userName").val(dataObj.Firstname);
-			$("#address").val(dataObj.Lastname);
-			$("#emailId").val(dataObj.Sex);
-			$("#city").val(dataObj.Age);
-			
-		});
-	};
+function doRead(userId) {
+	$.getJSON("./index.php/api/person/" + userId, function(dataObj) {
+		$("#myuserAddForm")[0].reset();
+		$("#userId").val(dataObj.variables.id);
+		$("#Firstname").val(dataObj.variables.Firstname);
+		$("#Lastname").val(dataObj.variables.Lastname);
+		$("#Age").val(dataObj.variables.Age);
 
-	function doSave(postData) {
-		$.ajax({
-			url : "data/users.json",
-			type : "POST",
-			headers : {
-				"Accept" : "application/json; charset=utf-8",
-				"Content-Type" : "application/json; charset=utf-8"
-			},
-			data : JSON.stringify(postData),
-			dataType : "json",
-			success : function(msg) {
-				alert("test inside success");
-				var userRow = undefined;
-				userRow = constructTr(postData);
+		if (dataObj.variables.Sex === "M")
+		{
+			$('#male').prop('checked', true);
+		}
+		else
+		{
+			$("#female").prop('checked', true);	
+		}
+	});
+};
 
-				$("#LoadingImage").hide();
-				$("#user-list-table tbody").append(userRow);
-				$("#modal-user-form").modal('hide');
-			},
-			error : function(xhr, status) {
-				$("#LoadingImage").hide();
-			}
-		});
-	}
+function doSave(postData) {
+	$.ajax({
+		url : "./index.php/api/person",
+		type : "POST",
+		headers : {
+			"Accept" : "application/json; charset=utf-8",
+			"Content-Type" : "application/json; charset=utf-8"
+		},
+		data : JSON.stringify(postData),
+		dataType : "json",
+		success : function(msg) {
+			var userRow = undefined;
+			postData.id = new Number(msg);
+			userRow = constructTr(postData);
 
-	function doUpdate(postData) {
-		$.ajax({
-			url : "data/users.json",
-			type : "PUT",
+			$("#LoadingImage").hide();
+			$("#user-list-table tbody").append(userRow);
+			$("#modal-user-form").modal('hide');
+		},
+		error : function(xhr, status) {
+			$("#LoadingImage").hide();
+		}
+	});
+}
+
+function doUpdate(postData) {
+	$.ajax({
+		url : "./index.php/api/person",
+		type : "PUT",
 			/*
 			 headers : {
 			 "Accept" : "application/json; charset=utf-8",
 			 "Content-Type" : "application/json; charset=utf-8"
-			 },*/
+			},*/
 			data : JSON.stringify(postData),
 			dataType : "json",
 			success : function(msg) {
-				var userRow = undefined;
-
-				if (postData.userType === "V") {
-					userRow = constructTr(postData);
+				msg = new Number(msg);
+				if (msg > 0) {
+					$('#' + postData.id).find("td").eq(0).html(postData.id); 
+					$('#' + postData.id).find("td").eq(1).html(postData.Firstname); 
+					$('#' + postData.id).find("td").eq(2).html(postData.Lastname); 
+					$('#' + postData.id).find("td").eq(3).html(postData.Sex);	
+					$('#' + postData.id).find("td").eq(4).html(postData.Age);	
 				} else {
-					userRow = constructTr(msg);
+					// show error message
 				}
 
 				$("#LoadingImage").hide();
-				$("#user-list-table tbody").append(userRow);
+				//$("#user-list-table tbody").append(userRow);
 				$("#modal-user-form").modal("hide");
 			},
 			error : function(xhr, status) {
 				$("#LoadingImage").hide();
 			}
 		});
-	}
+}
 
-	function doDelete(userId) {
-		/*
-		 $.ajax({
-		 url : "data/users.json",
-		 type : "DELETE"
-		 }).done(function() {
-		 $tr.fadeOut('slow', 'swing', function(here) {
-		 $(this).remove();
-		 });
-		 });
-		 */
+function doDelete(userId) {
+	$.ajax({
+		url : "./index.php/api/person/" + userId,
+		type : "DELETE"
+	}).done(function() {
 		$tr.fadeOut('slow', 'swing', function(here) {
 			$(this).remove();
 		});
-	}
+	});
+	$tr.fadeOut('slow', 'swing', function(here) {
+		$(this).remove();
+	});
+}
 
-	function constructTr(user) {
-		var userRow = '<tr id=' + user.Id + '><td>' + 
-			user.Id + '</td><td>' 
-			+ user.Firstname + "</td>" + '<td class="hidden-480"><h5>' 
-			+ user.Lastname + '</h5></td><td>' 
-			+ user.Sex + '</small ></td><td align="center">' 
-			+ user.Age + '</td><td class="hidden-480"><h5>' 
-			+ '<button class="btn btn-xs btn-info js-edit">E</button><button class="btn btn-xs btn-danger js-delete">D</button></td></tr>';
-		return userRow;
-	};
+function constructTr(user) {
+	var userRow = '<tr id=' + user.id + '><td>' + 
+	user.id + '</td><td>' 
+	+ user.Firstname + "</td>" + '<td class="hidden-480"><h5>' 
+	+ user.Lastname + '</h5></td><td>' 
+	+ user.Sex + '</small ></td><td align="center">' 
+	+ user.Age + '</td><td class="hidden-480"><h5>' 
+	+ '<button class="btn btn-xs btn-info js-edit">E</button><button class="btn btn-xs btn-danger js-delete">D</button></td></tr>';
+	return userRow;
+};
 
-	$("#btnSaveuser").click(function(e) {
-		e.preventDefault();
+$("#btnSaveuser").click(function(e) {
+	e.preventDefault();
 		//stops the event action
 		var data = $("#myuserAddForm").serializeJSON();
-		if (data.userId === "" || data.userId == undefined) {
-			delete data["userId"];
+		if (data.id === "" || data.id == undefined) {
+			delete data["id"];
 		} else {
-			data.userId = Number(data.userId);
+			data.id = Number(data.id);
 		}
 
 		var method = "POST";
 
-		if (data.userId !== undefined) {
+		if (data.id !== undefined) {
 			doUpdate(data);
 		} else {
 			doSave(data);

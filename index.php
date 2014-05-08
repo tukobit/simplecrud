@@ -69,7 +69,7 @@ $app->post(
 );
 
 $app->get(
-    '/api/person',
+    '/api/person/',
     function () use ($app)  {
       $log = new Log();	
       $log->write("get method called");
@@ -81,11 +81,41 @@ $app->get(
     }
 );
 
+$app->get(
+    '/api/person/:personId',
+    function ($personId) use ($app)  {
+      $log = new Log(); 
+      $log->write("get method called");
+      $response = $app->response();
+      $response['Content-Type'] = 'application/json';
+      $person  = new Person();
+      $person->id = $personId;        
+      $person->Find();
+      $response->body(json_encode($person));
+    }
+);
+
 // PUT route
 $app->put(
-    '/api/person/put',
-    function () {
-        echo 'This is a PUT route';
+    '/api/person',
+    function () use ($app) {
+    $log = new Log(); 
+    $request = $app->request();
+    $receivedData = json_decode($request->getBody());
+
+    $person  = new Person();
+    $person->id = $receivedData->id;
+    $person->Firstname = $receivedData->Firstname;
+    $person->Lastname = $receivedData->Lastname;
+    $person->Age = $receivedData->Age;
+    $person->Sex = $receivedData->Sex;
+    $log->write(json_encode($person));
+    $saved = $person->Save(); 
+    $log->write(json_encode($saved));
+    //Construct response
+    $response = $app->response();
+    $response['Content-Type'] = 'application/json';
+    $response->body(json_encode($saved));
     }
 );
 
@@ -96,9 +126,15 @@ $app->patch('/api/person/patch', function () {
 
 // DELETE route
 $app->delete(
-    '/api/person/delete',
-    function () {
-        echo 'This is a DELETE route';
+    '/api/person/:personId',
+    function ($personId) use ($app) {
+        $person  = new Person();
+        $person->id = $personId;
+        $delete = $person->Delete();
+      
+        $response = $app->response();
+        $response['Content-Type'] = 'application/json';
+        $response->body(json_encode($delete));
     }
 );
 
