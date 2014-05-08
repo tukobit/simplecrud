@@ -1,0 +1,25 @@
+[
+    {
+    	"userId": 1,
+        "Firstname": "Sivakumar",
+        "LastName": "Krishnasamy",
+        "Sex": "M",
+        "Age": "32"
+    },
+    {
+    	"userId": 2,
+        "Firstname": "Radhakrishana",
+        "emailId": "rk@propertycare.co.in",
+        "address": "Tulip garden",
+        "city": "Chennai",
+        "state": "Tamilnadu"
+    },
+    {
+    	"userId": 3,
+        "userName": "Sakthivel ganesan",
+        "emailId": "sakthivel@capjo.co.in",
+        "address": "Tulip garden",
+        "city": "Chennai",
+        "state": "Tamilnadu"
+    }
+]
