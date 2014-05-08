@@ -1,3 +1,18 @@
+Time : 15:27:08
+get method called
+
+Time : 15:26:00
+1
+
+Time : 15:26:00
+{"variables":{"id":27,"Firstname":"Sivakumar","Lastname":"K","Age":"23","Sex":"M"}}
+
+Time : 15:25:55
+get method called
+
+Time : 15:25:53
+get method called
+
 Time : 15:11:00
 get method called
 
