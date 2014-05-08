@@ -1,0 +1,48 @@
+Time : 12:56:20
+get method called
+
+Time : 12:48:59
+"22"
+
+Time : 12:48:59
+{"variables":{"Firstname":"Harish","Lastname":"B","Age":23,"Sex":"M"}}
+
+Time : 12:48:59
+post method called
+
+Time : 12:35:20
+"21"
+
+Time : 12:35:20
+{"variables":{"Firstname":"Harish","Lastname":"B","Age":23,"Sex":"M"}}
+
+Time : 12:35:20
+post method called
+
+Time : 12:34:35
+1
+
+Time : 12:34:35
+{"variables":{"Firstname":"Harish","Lastname":"B","Age":23,"Sex":"M"}}
+
+Time : 12:34:35
+post method called
+
+Time : 12:34:24
+{"variables":{"log":{},"Firstname":"Harish","Lastname":"B","Age":23,"Sex":"M"}}
+
+Time : 12:34:24
+post method called
+
+Time : 12:33:40
+{"variables":{"log":{},"Firstname":"Harish","Lastname":"B","Age":23,"Sex":"M"}}
+
+Time : 12:33:40
+post method called
+
+Time : 12:33:28
+{"variables":{"log":{},"Firstname":"Harish","Lastname":"B","Age":23,"Sex":"M"}}
+
+Time : 12:33:28
+post method called
+
