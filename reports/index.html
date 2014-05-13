@@ -1,0 +1,344 @@
+  <html>
+  <head>
+  	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  	<title>guest card report</title>
+  	<link rel="stylesheet" type="text/css" href="jquery.contextmenu.css">
+
+  	<link rel="stylesheet" type="text/css" href="table.css"/>
+    <link rel="stylesheet" href="grid.css" type="text/css"/>
+    <link rel="stylesheet" href="formeter.css" type="text/css"/>
+    <link rel="stylesheet" href="slick.css" type="text/css"/>
+    <!--<script type="text/javascript" src="http://code.jquery.com/jquery-1.6.1.min.js"></script>-->
+    <script type="text/javascript" src="java.js"></script>
+    <script type="text/javascript" src="jquery.contextmenu.js"></script>
+    <!----> 
+    <script type="text/javascript">
+      /*
+      $(document).ready(function(){
+       $("#contextLocationBtn").click(function(e){$('#contextMenu').menu('show', {
+         left: e.pageX,
+         top: e.pageY,
+         onClick: function(e)
+         {
+            alert($(e));
+         }
+       });
+       return false;
+     });
+  });*/
+  </script>
+  <script>
+   /*
+      $("#excelExport").jqxButton({
+        theme: 'energyblue'
+      });
+
+      $("#excelExport").click(function() {
+        $("#formatter").formatter('exportdata', 'xls', 'formatter');
+      });
+  */
+  </script>
+  <script>
+   $(document).ready(function() {
+     $('ul#tools').prepend('<li class="print"><a href="#print">Click me to print</a></li>');
+     $('ul#tools li.print a').click(function() {
+       window.print();
+       return false;
+     });
+   });
+
+     /*
+
+     function check()
+     { 
+       var columnHeader = [
+       {id: "Guest Card name", name: "Guest Card Name", field: "Guest Card Name", width: 80, cssClass: "cell-title", formatter: formatter},
+       {id: "Email Address", name: "Email Address", field: "Email Address", width: 80, cssClass: "cell-title", formatter: formatter},
+       {id: "Phone No", name: "Phone No", field: "Phone No", width: 80, cssClass: "cell-title", formatter: formatter},
+       {id: "Received Date", name: "Recevied Date", field: "Received Date", width: 60, cssClass: "cell-title", formatter: formatter},
+       {id: "Status", name: "Status", field: "Status", width: 90, cssClass: "cell-title", formatter: formatter},
+       {id: "Move In Property Date", name: "Move In Property Date", field: "Move In Property Date", width: 90, cssClass: "cell-title", formatter: formatter},
+       {id: "Max Rent", name: "Max Rent", field: "Max Rent", width: 90, cssClass: "cell-title", formatter: formatter},
+       {id: "Bed & Bath", name: "Bed & Bath", field: "Bed & Bath", width: 120, cssClass: "cell-title", formatter: formatter},
+       {id: "Pet Preference", name: "Pet Preference", field: "Pet Preference", width: 120, cssClass: "cell-title", formatter: formatter},
+       ];
+       if(document.getElementById("source").checked==true)
+       {
+         var columnHeader = [
+         {id: "Guest Card name", name: "Guest Card Name", field: "Guest Card Name", width: 80, cssClass: "cell-title", formatter: formatter},
+         {id: "Email Address", name: "Email Address", field: "Email Address", width: 80, cssClass: "cell-title", formatter: formatter},
+         {id: "Phone No", name: "Phone No", field: "Phone No", width: 80, cssClass: "cell-title", formatter: formatter},
+         {id: "Received Date", name: "Recevied Date", field: "Received Date", width: 60, cssClass: "cell-title", formatter: formatter},
+         {id: "Status", name: "Status", field: "Status", width: 90, cssClass: "cell-title", formatter: formatter},
+         {id: "Move In Property Date", name: "Move In Property Date", field: "Move In Property Date", width: 90, cssClass: "cell-title", formatter: formatter},
+         {id: "Max Rent", name: "Max Rent", field: "Max Rent", width: 90, cssClass: "cell-title", formatter: formatter},
+         {id: "Bed & Bath", name: "Bed & Bath", field: "Bed & Bath", width: 120, cssClass: "cell-title", formatter: formatter},
+         {id: "Pet Preference", name: "Pet Preference", field: "Pet Preference", width: 120, cssClass: "cell-title", formatter: formatter},
+         {id: "Source", name: "Source", field: "Source", width: 120, cssClass: "cell-title", formatter: formatter},
+         ];
+       }
+       if(document.getElementById("property").checked==true)
+       {
+        alert("gujv");
+      }
+      grid = new Slick.Grid("#myGrid", data, columnHeader, options);
+    }
+    */
+  </script>
+  <style>
+  }
+  table
+  {
+    border-collapse:collapse;
+    
+  }
+  table, td,th
+  {
+    border:0px solid #d0e4ef ;
+    border-collapse:collapse;
+    background-color:#FFFFFF;
+  }
+  th 
+  {
+    background-color:#f5f5f5;
+    color:black;
+  }
+  .cell-title {
+    font-weight:normal;
+  }
+
+  .cell-effort-driven {
+    text-align: center;
+  }
+  </style>
+  </head>
+  <body>
+    <div id="contextMenu" class="easyui-menu" style="width:200px;">
+     <!-- <div ><input name="s" id="source" type="checkbox" value="">Source</div>
+      <div ><input name="s" id="source"  type="checkbox" value="">Guest Card name</div>
+      <div><input name="p" id="property" type="checkbox" value="">property Information</div>
+      <div><input name="" type="checkbox" value="">Email Address</div>
+      <div><input name="" type="checkbox" value="">Phone Number</div>
+      <div><input name="" type="checkbox" value="">Received Date</div>
+      <div><input id="unit" type="checkbox" value="">Units Interested In</div> -->
+    </div>
+    <div id="container" style="width:1000px;">
+      <div class="outset-colored">
+        <div id="header" style="background-color:#d0e4ef;height:150px">
+          <div id="text2">GUEST CARD <a href="mahesh.php">
+            <img src="image/1395222267_arrow_state_blue_expanded.png"></a>
+            <li>
+              <a href="save.html" class="export">
+                <img src="image/save.png" alt="save" />
+                <span class="site"><strong>SAVE</strong></span>		</a>		</li>
+                <li>
+                  <a href="email.html" class="export">
+                    <img src="image/emailcom.png" alt="Facebook icon" />
+                    <span class="site"><strong>EMAIL</strong></span>		</a>		</li>
+                    <li>
+                      <a href="" onClick="window.print(); return true;" class="export">
+                        <img src="image/printcom.png"alt="Twitter icon" />
+                        <span class="site"><strong>PRINT</strong></span>		</a>		</li>
+
+                        <li id="excelExport">
+                          <a href="" class="export" id='formatter'>
+                            <img src="image/export.png"alt="expotr icon"/>
+                            <span class="site"><strong >EXPORT</strong></span>		</a>		</li>
+                            <li>
+                              <a href="filll.html"class="export">
+                                <img src="image/fi.png" alt="gmail icon" />
+                                <span class="site"><strong>FILTER</strong></span>		</a>		</li>
+                                <li> 
+                                 <a href="guest card report.html" onClick="javascript:window.location.reload()" class="export">
+                                  <img src="image/ref.png" alt="Flickr icon" />
+                                  <span class="site"><strong>REFRESH</strong></span>		</a>		</li>
+                                  <h1>
+                                  </div>
+                                </div>
+                                <div id="footer" style="background-color:#d0e4ef;clear:both;text-align:left;">
+                                  <table  border="2" style="border-collapse:collapse;" >
+                                   <tr><td>
+                                    <div id="myGrid" style="width:988px;height:510px; border-color:#d0e4ef;"></div>
+
+                                  </td>
+                                  <td>
+                                    <a class="img" id="contextLocationBtn" >
+                                     <img src="image/ZA010180635.GIF"/></a><strong></strong>
+                                   </div>
+                                 </td>
+                               </tr>
+                             </table>
+                             <script src="tab.js"></script>
+                             <script src="jav.js"></script>
+                             <script src="jquery.event.drag-2.2.js"></script>
+                             <script src="slick.core.js"></script>
+                             <script src="slick.formatters.js"></script>
+                             <script src="slick.grid.js"></script>
+                             <script>
+                             // Speed up calls to hasOwnProperty
+                             var hasOwnProperty = Object.prototype.hasOwnProperty;
+
+                             function isEmpty(obj) {
+
+                                // null and undefined are "empty"
+                                if (obj == null) return true;
+
+                                // Assume if it has a length property with a non-zero value
+                                // that that property is correct.
+                                if (obj.length > 0)    return false;
+                                if (obj.length === 0)  return true;
+
+                                // Otherwise, does it have any properties of its own?
+                                // Note that this doesn't handle
+                                // toString and valueOf enumeration bugs in IE < 9
+                                for (var key in obj) {
+                                  if (hasOwnProperty.call(obj, key)) return false;
+                                }
+
+                                return true;
+                              }
+    var setVisibleIndex = 5;
+    function initDisplay()
+    {
+      var columnHeader = [
+        {id: "Guest_Card_Name", name: "Guest Card Name", field: "Guest Card Name", width: 80, cssClass: "cell-title", formatter: formatter},
+        {id: "Email Address", name: "Email Address", field: "Email Address", width: 80, cssClass: "cell-title", formatter: formatter},
+        {id: "Phone No", name: "Phone No", field: "Phone No", width: 80, cssClass: "cell-title", formatter: formatter},
+        {id: "Received Date", name: "Recevied Date", field: "Received Date", width: 60, cssClass: "cell-title", formatter: formatter},
+        {id: "Status", name: "Status", field: "Status", width: 90, cssClass: "cell-title", formatter: formatter},
+        {id: "Move In Property Date", name: "Move In Property Date", field: "Move In Property Date", width: 90, cssClass: "cell-title", formatter: formatter}];
+
+        return columnHeader; 
+    }
+    function constructHeader()
+    {
+        var columnHeader = [
+        {id: "Guest_Card_Name", name: "Guest Card Name", field: "Guest Card Name", width: 80, cssClass: "cell-title", formatter: formatter},
+        {id: "Email Address", name: "Email Address", field: "Email Address", width: 80, cssClass: "cell-title", formatter: formatter},
+        {id: "Phone No", name: "Phone No", field: "Phone No", width: 80, cssClass: "cell-title", formatter: formatter},
+        {id: "Received Date", name: "Recevied Date", field: "Received Date", width: 60, cssClass: "cell-title", formatter: formatter},
+        {id: "Status", name: "Status", field: "Status", width: 90, cssClass: "cell-title", formatter: formatter},
+        {id: "Move In Property Date", name: "Move In Property Date", field: "Move In Property Date", width: 90, cssClass: "cell-title", formatter: formatter},
+        {id: "Max Rent", name: "Max Rent", field: "Max Rent", width: 90, cssClass: "cell-title", formatter: formatter},
+        {id: "Bed & Bath", name: "Bed & Bath", field: "Bed & Bath", width: 120, cssClass: "cell-title", formatter: formatter},
+        {id: "Pet Preference", name: "Pet Preference", field: "Pet Preference", width: 120, cssClass: "cell-title", formatter: formatter}
+        ];
+        return columnHeader;
+    } 
+
+    function formatter(row, cell, value, columnDef, dataContext) {
+      return value;
+    }
+    var grid;
+    var data = new Array();
+
+    
+    var options = {
+      editable: false,
+      enableAddRow: false,
+      enableCellNavigation: true,
+    };
+
+    function menuModified(e)
+    {
+      var selectedColumns = new Array()
+      var selectedElements = $(".context-menu-list input:checkbox:checked ");
+      var count = selectedElements.length;
+      
+      $(".context-menu-list input:checkbox:checked ").each(function(i, element)
+      {
+          var columnName = $(element).val();
+          var data = {id: columnName, name: columnName, field: columnName, width: 90, cssClass: "cell-title", formatter: formatter};
+           selectedColumns.push(data);
+          if (!--count)
+          {
+              grid.setColumns(selectedColumns);
+          }
+      });
+    }
+
+    $(function () {
+      var items = new Array();    
+      $.each(constructHeader(), function(i, column){
+        items.push({name:column.name, value:column.name, type:'checkbox', selected:true, events: {change: menuModified} 
+        });
+      });
+
+      $.contextMenu({
+       selector: '#contextLocationBtn', 
+      trigger: 'left',
+       items: items,
+       sep2: "---------",
+       callback: function(key, options) {
+       },
+       events: {
+        show: function(opt) {
+               // this is the trigger element
+               var $this = this;
+            // import states from data store 
+            $.contextMenu.setInputValues(opt, $this.data());
+            // this basically fills the input commands from an object
+            // like {name: "foo", yesno: true, radio: "3", …}
+          }, 
+          hide: function(opt) {
+            // this is the trigger element
+            var $this = this;
+            // export states to data store
+            $.contextMenu.getInputValues(opt, $this.data());
+            // this basically dumps the input commands' values to an object
+            // like {name: "foo", yesno: true, radio: "3", …}
+          }
+        }
+      });
+
+      // $(document.body).on("contextmenu:hide", ".context-menu-item",  function(e){ 
+      //   console.log("focus:", this); 
+      //   alert("hide contextmenu event called");
+      // });
+      $.contextMenu.setInputValues = function(opt, data) {
+        if (isEmpty(data)) {
+          data = {};
+          $.each(opt.inputs, function(key, item) {
+            if (key <= setVisibleIndex)
+            {
+              item.selected = true;  
+            }
+            else
+            {
+              item.selected = false;
+            }
+            
+          });
+        }
+        else
+        {
+          $.each(opt.inputs, function(key, item) {
+            item.selected = data[key];
+          });
+        }
+      };
+
+      for (var i = 0; i < 5; i++) {
+        var rowItem = {};
+        rowItem["Guest Card Name"] = "" + i;
+        rowItem["Email Address"] = "Bangalore";
+        rowItem["Phone No"] = "4372928" ; 
+        rowItem["Received Date"] = "12/01/2014";
+        rowItem["Status"] = "Active ";
+        rowItem["Move In Property Date"] = "12-03-2014 ";
+        rowItem["Max Rent"] = "50,000 ";
+        rowItem["Bed & Bath"] = "2/1.50 ";
+        rowItem["Pet Preference"] = "Dogs"; 
+        rowItem["Source"] = "Dogs";
+        data.push(rowItem);
+      }
+
+      grid = new Slick.Grid("#myGrid", data, initDisplay(), options);
+  });
+  </script>
+  Help & Training &raquo;Make a Suggestion &raquo; Find
+  <input name="textfield" type="text" id="text"style="background:url(image/searchbutton3.gif)no-repeat;background-color:#FFFFFF; background-position:right;border:1px solid #d0e4ef;size=" size="35"200px"> 
+  </div>
+  </div>
+  </body>
+  </html>
